@@ -1,0 +1,94 @@
+#include<stdio.h>
+int en,lh,at,lv,bs,a=1,y,c,x,z;
+void display()
+{
+    printf("\n\t   *** SILVER HOLDINGS (PVT) LTD ***\n\t\t      KATUNAYAKA\n\n");
+    printf("\t  Annual Festival Bonus for Employees\n\n\n\n");
+}
+void employee_Number()
+{
+    printf(" Enter the Employee Number                    : ");
+    scanf("%d",&en);
+}
+void input()
+{
+    printf(" Enter full attendance of year                : ");
+    scanf("%d",&at);
+    if(at<190)
+    {
+        printf("\n\tEmployee Number : %d\n",en);
+        printf("\tNo Bonus!\n\n");
+    }
+    else
+    {
+        printf(" Enter late hours for year                    : ");
+        scanf("%d",&lh);
+        printf(" Enter unconfirmed leaves for year            : ");
+        scanf("%d",&lv);
+        printf(" Enter the basic salary of employee per month : Rs.");
+        scanf("%d",&bs);
+    }
+}
+void decrease()
+{
+    if(lh>10)
+    {
+        z=(lh-10)*100;
+    }
+    else if(lh<=10)
+    {
+        z=0;
+    }
+    if(lv>=1)
+    {
+        x=x+lv*500;
+    }
+    else if(lv<1)
+    {
+        x=0;
+    }
+    c=y-(z+x);
+}
+void calculation()
+{
+    c=0,x=0,y=0,z=0;
+    if(at>=230)
+    {
+        y=y+bs*2;
+        decrease();
+    }
+    else if(at>=190)
+    {
+        y=y+bs;
+        decrease();
+    }
+}
+void result()
+{
+    if(at>=190)
+    {
+        printf("\n\tEmployee Number : %d\n",en);
+        printf("\tBonus           : Rs.%d\n\n",c);
+    }
+    a++;
+    if(a>1)
+    {
+        employee_Number();
+    }
+}
+void thank()
+{
+    printf("\n\t\t  THANK YOU!\n");
+}
+void main()
+{
+    display();
+    employee_Number();
+    while(en!=0)
+    {
+        input();
+        calculation();
+        result();
+    }
+    thank();
+}
